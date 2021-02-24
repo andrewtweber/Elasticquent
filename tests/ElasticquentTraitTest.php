@@ -1,6 +1,8 @@
 <?php
 
-class ElasticquentTraitTest extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class ElasticquentTraitTest extends TestCase {
 
     public $modelData = array('name' => 'Test Name');
 
@@ -9,7 +11,7 @@ class ElasticquentTraitTest extends PHPUnit_Framework_TestCase {
      *
      * @return void
      */
-    public function setup()
+    public function setup(): void
     {
         $this->model = new TestModel;
         $this->model->fill($this->modelData);
@@ -24,7 +26,7 @@ class ElasticquentTraitTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test type name overrides table name 
+     * Test type name overrides table name
      */
     public function testTypeNameOverridesTableName()
     {

@@ -12,11 +12,13 @@
  * specifically returns results consistent with the ElasticSearch PHP client version
  * 2.0 documentation.
  *
- * The Elasticquent method will then format the response and we test that the resulting 
- * Elasticquent results collection methods return the results we expect to verify this. 
- */ 
+ * The Elasticquent method will then format the response and we test that the resulting
+ * Elasticquent results collection methods return the results we expect to verify this.
+ */
 
-class ElasticSearchMethodsTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ElasticSearchMethodsTest extends TestCase
 {
     protected $expectedHits = [
             'total' => 2,
@@ -41,7 +43,7 @@ class ElasticSearchMethodsTest extends PHPUnit_Framework_TestCase
             ]
         ];
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->model = new SearchTestModel;
     }
