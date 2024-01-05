@@ -3,6 +3,11 @@
 interface ElasticquentInterface
 {
     /**
+     * Unique identifier for this model
+     */
+    public function getElasticId(): mixed;
+
+    /**
      * Get ElasticSearch Client
      *
      * @return Elasticsearch\Client

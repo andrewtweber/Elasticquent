@@ -64,6 +64,11 @@ trait ElasticquentTrait
         return new ElasticquentCollection($models);
     }
 
+    public function getElasticId(): mixed
+    {
+        return $this->getKey();
+    }
+
     /**
      * Get Type Name
      *
@@ -309,7 +314,7 @@ trait ElasticquentTrait
         // other than an auto-incrementing value. That way we
         // can do things like remove the document from
         // the index, or get the document from the index.
-        $params['id'] = $this->getKey();
+        $params['id'] = $this->getElasticId();
 
         return $this->getElasticSearchClient()->index($params);
     }
@@ -373,8 +378,8 @@ trait ElasticquentTrait
             'type' => $this->getTypeName(),
         );
 
-        if ($getIdIfPossible && $this->getKey()) {
-            $params['id'] = $this->getKey();
+        if ($getIdIfPossible && $this->getElasticId()) {
+            $params['id'] = $this->getElasticId();
         }
 
         if (is_numeric($limit)) {
@@ -586,14 +591,14 @@ trait ElasticquentTrait
     public function newFromHitBuilder($hit = array())
     {
         $key_name = $this->getKeyName();
-        
+
         $attributes = $hit['_source'];
 
         if (isset($hit['_id'])) {
             $idAsInteger = intval($hit['_id']);
             $attributes[$key_name] = $idAsInteger ? $idAsInteger : $hit['_id'];
         }
-        
+
         // Add fields to attributes
         if (isset($hit['fields'])) {
             foreach ($hit['fields'] as $key => $value) {
@@ -686,7 +691,7 @@ trait ElasticquentTrait
         $items = array_map(function ($item) use ($instance, $parentRelation) {
             // Convert all null relations into empty arrays
             $item = $item ?: [];
-            
+
             return static::newFromBuilderRecursive($instance, $item, $parentRelation);
         }, $items);
 

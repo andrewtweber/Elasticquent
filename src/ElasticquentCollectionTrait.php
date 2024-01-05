@@ -43,7 +43,7 @@ trait ElasticquentCollectionTrait
             foreach ($chunk as $item) {
                 $params['body'][] = array(
                     'index' => array(
-                        '_id' => $item->getKey(),
+                        '_id' => $item->getElasticId(),
                         '_type' => $item->getTypeName(),
                         '_index' => $item->getIndexName(),
                     ),
@@ -82,7 +82,7 @@ trait ElasticquentCollectionTrait
         foreach ($all as $item) {
             $params['body'][] = array(
                 'delete' => array(
-                    '_id' => $item->getKey(),
+                    '_id' => $item->getElasticId(),
                     '_type' => $item->getTypeName(),
                     '_index' => $item->getIndexName(),
                 ),
