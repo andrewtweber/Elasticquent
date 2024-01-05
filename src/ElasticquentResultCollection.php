@@ -21,7 +21,7 @@ class ElasticquentResultCollection extends \Illuminate\Database\Eloquent\Collect
      * @param  array  $meta
      * @return void
      */
-    public function __construct($items, $meta = null)
+    public function __construct($items = [], $meta = null)
     {
         // Detect if arguments are old deprecated version ($results, $instance)
         if (isset($items['hits']) and $meta instanceof \Illuminate\Database\Eloquent\Model) {
@@ -142,7 +142,7 @@ class ElasticquentResultCollection extends \Illuminate\Database\Eloquent\Collect
     public function paginate($pageLimit = 25)
     {
         $page = Paginator::resolveCurrentPage() ?: 1;
-       
+
         return new Paginator($this->items, $this->hits, $this->totalHits(), $pageLimit, $page, ['path' => Paginator::resolveCurrentPath()]);
     }
 }
