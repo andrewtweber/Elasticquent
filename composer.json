@@ -18,8 +18,8 @@
   ],
   "require": {
     "php": "^8.0",
-    "illuminate/database": "~4.2|^5|^6|^7|^8|^9|^10|^11|^12",
-    "illuminate/config": "~4.2|^5|^6|^7|^8|^9|^10|^11|^12",
+    "illuminate/database": "~4.2|^5|^6|^7|^8|^9|^10|^11|^12|^13",
+    "illuminate/config": "~4.2|^5|^6|^7|^8|^9|^10|^11|^12|^13",
     "nesbot/carbon": "~1.0|~2|~3",
     "elasticsearch/elasticsearch": "^7.0|^8.3"
   },
