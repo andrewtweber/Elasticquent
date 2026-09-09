@@ -10,7 +10,7 @@ interface ElasticquentInterface
     /**
      * Get ElasticSearch Client
      *
-     * @return Elasticsearch\Client
+     * @return \OpenSearch\Client
      */
     public function getElasticSearchClient();
 
